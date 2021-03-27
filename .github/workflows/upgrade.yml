@@ -1,0 +1,38 @@
+# This is a basic workflow that is manually triggered
+name: Yarn Package Upgrader
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  schedule:
+    - cron: "0 0 * * */7"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  greet:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - name: Installing Yarn
+      run: npm install -g yarn
+    - name: Installing dependencies
+      run: yarn
+    - name: Run Upgrade
+      run: yarn upgrade
+    - name: Add & Commit
+      uses: EndBug/add-and-commit@v5.2.0
+      with:
+        add: .
+        author_name: Alex4386
+        author_email: psh010209@gmail.com
+        # The message for the commit
+        message: "chore: upgrade maintenances"
+        
