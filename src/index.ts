@@ -6,7 +6,7 @@ import { login } from './login';
 import chalk from 'chalk';
 
 export const config = JSON.parse(fs.readFileSync('config.json', { encoding: 'utf-8' })) as ConfigInterface;
-const autoKickChannels: Long[] = [new Long(18202893633846505)];
+const autoKickChannels: Long[] = [Long.fromString('18202893633846505')];
 
 function isTargetChannel(channelId: Long) {
   return autoKickChannels.filter((n) => n.eq(channelId)).length > 0;
@@ -33,6 +33,15 @@ let kickTargets: {
     const sender = data.getSenderInfo(channel);
     if (!sender) return;
 
+    console.log(
+      chalk.greenBright('Got new message:'),
+      data.chat.text,
+      'from channel',
+      chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
+      'from user',
+      chalk.cyanBright(sender.userId, '(' + sender.nickname + ')'),
+    );
+
     if (isTargetChannel(channel.channelId)) {
       const targets = kickTargets.filter((n) => n.channelId.eq(channel.channelId) && sender.userId.eq(n.userId));
 
@@ -40,34 +49,63 @@ let kickTargets: {
         for (const target of targets) {
           clearTimeout(target.timeout);
         }
+
+        kickTargets = kickTargets.filter((n) => !(n.channelId.eq(channel.channelId) && sender.userId.eq(n.userId)));
+        console.log(chalk.redBright('Removed target: ' + sender.nickname));
+
+        setTimeout(() => {
+          channel.sendChat(sender.nickname + '님! 인증 감사합니다!');
+        }, 2000);
       }
-
-      kickTargets = kickTargets.filter((n) => !(n.channelId.eq(channel.channelId) && sender.userId.eq(n.userId)));
-      console.log(chalk.redBright('Removed target: ' + sender.nickname));
-
-      setTimeout(() => {
-        channel.sendChat(sender.nickname + '님! 인증 감사합니다!');
-      }, 2000);
     }
   });
 
   // Main process start
   client.on('user_join', (joinLog, channel, user, feed) => {
-    setTimeout(() => {
-      if (isTargetChannel(channel.channelId)) {
+    console.log(
+      chalk.greenBright('New user joined:'),
+      'from channel',
+      chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
+      'from user',
+      chalk.cyanBright(user.userId, '(' + user.nickname + ')'),
+    );
+
+    if (isTargetChannel(channel.channelId)) {
+      setTimeout(() => {
+        console.log(
+          chalk.redBright('Requesting user to send message:'),
+          'to user',
+          chalk.cyanBright(
+            user.userId,
+            '(' + user.nickname + ')',
+            'at channel',
+            chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
+          ),
+        );
+
         channel.sendChat(
           '안녕하세요, ' + user.nickname + '님! 메세지 남겨 주시면 감사하겠습니다. (스팸 차단 목적입니다!)',
         );
-      }
-    }, 2000);
+      }, 2000);
 
-    console.log(chalk.greenBright('Added target: ' + user.nickname));
-    kickTargets.push({
-      channelId: channel.channelId,
-      userId: user.userId,
-      timeout: setTimeout(() => {
-        (client.channelList.get(channel.channelId) as TalkOpenChannel).kickUser(user);
-      }, 1000 * 60 * 60),
-    });
+      console.log(chalk.greenBright('Added target: '), chalk.cyanBright(user.userId, '(' + user.nickname + ')'));
+
+      kickTargets.push({
+        channelId: channel.channelId,
+        userId: user.userId,
+        timeout: setTimeout(() => {
+          console.log(
+            chalk.redBright('Kicking user due to unreceived message:'),
+            chalk.cyanBright(
+              user.userId,
+              '(' + user.nickname + ')',
+              'at channel',
+              chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
+            ),
+          );
+          (client.channelList.get(channel.channelId) as TalkOpenChannel).kickUser(user);
+        }, 1000 * 60 * 60),
+      });
+    }
   });
 })();
