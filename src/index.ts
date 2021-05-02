@@ -99,7 +99,7 @@ console.log();
         );
       }, 2000);
 
-      console.log(chalk.greenBright('Added target: '), chalk.cyanBright(user.userId, '(' + user.nickname + ')'));
+      console.log(chalk.greenBright('[TARG ADD]'), chalk.cyanBright(user.userId, '(' + user.nickname + ')'));
 
       kickTargets.push({
         channelId: channel.channelId,
