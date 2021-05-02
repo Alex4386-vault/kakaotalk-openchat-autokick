@@ -35,7 +35,7 @@ export async function login() {
       type: 'text',
       name: 'passcode',
       message: 'Enter the passcode you received from your phone',
-      validate: (value: string) => (value.length === 4 ? true : 'Invalid Port'),
+      validate: (value: string) => (value.length === 4 ? true : 'Invalid Passcode'),
     });
 
     const passcode = result.passcode;
