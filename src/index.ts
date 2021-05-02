@@ -32,6 +32,8 @@ console.log();
 
   if (!clientLoginRes.success) throw new Error('Client login failed with status: ' + clientLoginRes.status);
 
+  console.log();
+
   client.on('chat', (data, channel) => {
     const sender = data.getSenderInfo(channel);
     if (!sender) return;
