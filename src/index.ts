@@ -38,11 +38,12 @@ console.log();
 
     console.log(
       '[' + new Date().toLocaleString() + ']',
-      chalk.greenBright('Got new message:'),
+      chalk.greenBright('[NEW MSG ]'),
       data.chat.text,
-      'from channel',
+      '\n',
+      'Channel:',
       chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
-      'from user',
+      '/ User:',
       chalk.cyanBright(sender.userId, '(' + sender.nickname + ')'),
     );
 
@@ -68,10 +69,10 @@ console.log();
   client.on('user_join', (joinLog, channel, user, feed) => {
     console.log(
       '[' + new Date().toLocaleString() + ']',
-      chalk.greenBright('New user joined:'),
-      'from channel',
+      chalk.greenBright('[NEW USER]'),
+      'Channel:',
       chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
-      'from user',
+      '/ User:',
       chalk.cyanBright(user.userId, '(' + user.nickname + ')'),
     );
 
@@ -79,12 +80,12 @@ console.log();
       setTimeout(() => {
         console.log(
           '[' + new Date().toLocaleString() + ']',
-          chalk.redBright('Requesting user to send message:'),
-          'to user',
+          chalk.redBright('[SEND MSG]'),
+          'to',
           chalk.cyanBright(
             user.userId,
             '(' + user.nickname + ')',
-            'at channel',
+            '/ Channel:',
             chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
           ),
         );
@@ -102,11 +103,11 @@ console.log();
         timeout: setTimeout(() => {
           console.log(
             '[' + new Date().toLocaleString() + ']',
-            chalk.redBright('Kicking user due to unreceived message:'),
+            chalk.redBright('[KICKUSER]'),
             chalk.cyanBright(
               user.userId,
               '(' + user.nickname + ')',
-              'at channel',
+              '@ Channel:',
               chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
             ),
           );
