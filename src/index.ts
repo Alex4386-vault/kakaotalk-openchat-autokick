@@ -4,6 +4,7 @@ import { OpenChannelEvent } from 'node-kakao/dist/talk/event';
 import { ConfigInterface } from './interface';
 import { login } from './login';
 import chalk from 'chalk';
+import figlet from 'figlet';
 
 export const config = JSON.parse(fs.readFileSync('config.json', { encoding: 'utf-8' })) as ConfigInterface;
 const autoKickChannels: Long[] = [Long.fromString('18202893633846505')];
@@ -18,7 +19,8 @@ let kickTargets: {
   timeout: NodeJS.Timeout;
 }[] = [];
 
-console.log(chalk.yellowBright('Kakaotalk'), 'Openchat', chalk.redBright('Autokick'));
+console.log(figlet.textSync('Autokick', 'Small Slant'));
+console.log(chalk.yellowBright(chalk.bold('Kakaotalk')), 'Openchat', chalk.redBright(chalk.underline('Autokick')));
 console.log();
 
 (async () => {
