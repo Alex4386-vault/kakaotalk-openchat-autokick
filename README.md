@@ -13,7 +13,7 @@ A: GOD DAMN IT.
 
 Yes, I've experienced that and reporting to kakao did somehow help. But It still sucks.
 
-So, Introducing Kakaotalk openchat autokick! Usually those ad guys stay silent. And even with the message: "Please type any message to verify you are human" did not work. Probably they are utilizing automated bots using LOCO protocol.  
+So, Introducing Kakaotalk openchat autokick! Usually those ad guys stay silent. And even with the message: "Please type any message to verify you are human", they did not respond. Probably they are utilizing automated bots using LOCO protocol.  
 
 There is an old saying, "Eye for an eye". This software utilizes LOCO Protocol to automatically kick people who are not responding for 60 minutes with proper message request.  
 
