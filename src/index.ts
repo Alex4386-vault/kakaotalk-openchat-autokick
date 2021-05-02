@@ -37,6 +37,7 @@ console.log();
     if (!sender) return;
 
     console.log(
+      '[' + new Date().toLocaleString() + ']',
       chalk.greenBright('Got new message:'),
       data.chat.text,
       'from channel',
@@ -66,6 +67,7 @@ console.log();
   // Main process start
   client.on('user_join', (joinLog, channel, user, feed) => {
     console.log(
+      '[' + new Date().toLocaleString() + ']',
       chalk.greenBright('New user joined:'),
       'from channel',
       chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
@@ -76,6 +78,7 @@ console.log();
     if (isTargetChannel(channel.channelId)) {
       setTimeout(() => {
         console.log(
+          '[' + new Date().toLocaleString() + ']',
           chalk.redBright('Requesting user to send message:'),
           'to user',
           chalk.cyanBright(
@@ -98,6 +101,7 @@ console.log();
         userId: user.userId,
         timeout: setTimeout(() => {
           console.log(
+            '[' + new Date().toLocaleString() + ']',
             chalk.redBright('Kicking user due to unreceived message:'),
             chalk.cyanBright(
               user.userId,
