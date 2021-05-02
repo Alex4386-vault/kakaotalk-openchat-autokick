@@ -18,6 +18,9 @@ let kickTargets: {
   timeout: NodeJS.Timeout;
 }[] = [];
 
+console.log(chalk.yellowBright('Kakaotalk'), 'Openchat', chalk.redBright('Autokick'));
+console.log();
+
 (async () => {
   const loginData = await login();
   const client = new TalkClient();
