@@ -42,13 +42,11 @@ console.log();
 
     console.log(
       '[' + new Date().toLocaleString() + ']',
-      chalk.greenBright('[NEW MSG ]'),
-      data.chat.text,
-      '\n',
-      'Channel:',
-      chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
-      '/ User:',
+      chalk.greenBright('[NEW MESG]'),
+      chalk.yellowBright('[' + channel.getDisplayName() + ']'),
       chalk.cyanBright(sender.userId, '(' + sender.nickname + ')'),
+      ':',
+      data.chat.text,
     );
 
     if (isTargetChannel(channel.channelId)) {
@@ -70,9 +68,7 @@ console.log();
     console.log(
       '[' + new Date().toLocaleString() + ']',
       chalk.greenBright('[NEW USER]'),
-      'Channel:',
-      chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
-      '/ User:',
+      chalk.yellowBright('[' + channel.getDisplayName() + ']'),
       chalk.cyanBright(user.userId, '(' + user.nickname + ')'),
     );
 
@@ -88,12 +84,8 @@ console.log();
           console.log(
             '[' + new Date().toLocaleString() + ']',
             chalk.redBright('[KICKUSER]'),
-            chalk.cyanBright(
-              user.userId,
-              '(' + user.nickname + ')',
-              '@ Channel:',
-              chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
-            ),
+            chalk.yellowBright('[' + channel.getDisplayName() + ']'),
+            chalk.cyanBright(user.userId, '(' + user.nickname + ')'),
           );
           (client.channelList.get(channel.channelId) as TalkOpenChannel).kickUser(user);
         }, 1000 * randomMinutes * 60),
