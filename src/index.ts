@@ -61,10 +61,6 @@ console.log();
 
         kickTargets = kickTargets.filter((n) => !(n.channelId.eq(channel.channelId) && sender.userId.eq(n.userId)));
         console.log(chalk.redBright('Removed target: ' + sender.nickname));
-
-        setTimeout(() => {
-          channel.sendChat(sender.nickname + '님! 인증 감사합니다!');
-        }, 2000);
       }
     }
   });
@@ -81,25 +77,9 @@ console.log();
     );
 
     if (isTargetChannel(channel.channelId)) {
-      setTimeout(() => {
-        console.log(
-          '[' + new Date().toLocaleString() + ']',
-          chalk.redBright('[SEND MSG]'),
-          'to',
-          chalk.cyanBright(
-            user.userId,
-            '(' + user.nickname + ')',
-            '/ Channel:',
-            chalk.yellowBright(channel.channelId, '(' + channel.getDisplayName() + ')'),
-          ),
-        );
-
-        channel.sendChat(
-          '안녕하세요, ' + user.nickname + '님! 메세지 남겨 주시면 감사하겠습니다. (스팸 차단 목적입니다!)',
-        );
-      }, 2000);
-
       console.log(chalk.greenBright('[TARG ADD]'), chalk.cyanBright(user.userId, '(' + user.nickname + ')'));
+
+      const randomMinutes = Math.random() * 10 + 10;
 
       kickTargets.push({
         channelId: channel.channelId,
@@ -116,7 +96,7 @@ console.log();
             ),
           );
           (client.channelList.get(channel.channelId) as TalkOpenChannel).kickUser(user);
-        }, 1000 * 60 * 60),
+        }, 1000 * randomMinutes * 60),
       });
     }
   });
