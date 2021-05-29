@@ -13,6 +13,8 @@ function isTargetChannel(channelId: Long) {
   return autoKickChannels.filter((n) => n.eq(channelId)).length > 0;
 }
 
+const openchatRegex = /open\.kakao\.com\/o\/[A-Za-z0-9]{8}/g;
+
 let kickTargets: {
   channelId: Long;
   userId: Long;
@@ -51,6 +53,11 @@ console.log();
 
     if (isTargetChannel(channel.channelId)) {
       const targets = kickTargets.filter((n) => n.channelId.eq(channel.channelId) && sender.userId.eq(n.userId));
+
+      openchatRegex.lastIndex = 0;
+      if (data.chat.text && openchatRegex.test(data.chat.text)) {
+        console.log(chalk.red('TAJIRI'));
+      }
 
       if (targets.length > 0) {
         for (const target of targets) {
