@@ -50,13 +50,25 @@ console.log();
       ':',
       data.chat.text,
     );
-
     if (isTargetChannel(channel.channelId)) {
       const targets = kickTargets.filter((n) => n.channelId.eq(channel.channelId) && sender.userId.eq(n.userId));
 
       openchatRegex.lastIndex = 0;
       if (data.chat.text && openchatRegex.test(data.chat.text)) {
-        console.log(chalk.red('TAJIRI'));
+        const user = sender;
+
+        if (channel instanceof TalkOpenChannel) {
+          console.log(
+            '[' + new Date().toLocaleString() + ']',
+            chalk.redBright('[ DEL MSG]'),
+            chalk.yellowBright('[' + channel.getDisplayName() + ']'),
+            chalk.cyanBright(user.userId, '(' + user.nickname + ')'),
+          );
+
+          setTimeout(() => {
+            channel.hideChat(data.chat);
+          }, Math.random() * 5000 + 10000);
+        }
       }
 
       if (targets.length > 0) {
