@@ -13,7 +13,7 @@ function isTargetChannel(channelId: Long) {
   return autoKickChannels.filter((n) => n.eq(channelId)).length > 0;
 }
 
-const openchatRegex = /open\.kakao\.com\/o\/[A-Za-z0-9]{8}/g;
+const openchatRegex = /open\.kakao\.com\/o\/[A-Za-z0-9]{3,50}/g;
 
 let kickTargets: {
   channelId: Long;
