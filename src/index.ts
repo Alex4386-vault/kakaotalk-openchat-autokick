@@ -60,7 +60,7 @@ console.log();
         if (channel instanceof TalkOpenChannel) {
           console.log(
             '[' + new Date().toLocaleString() + ']',
-            chalk.redBright('[ DEL MSG]'),
+            chalk.redBright('[DEL MESG]'),
             chalk.yellowBright('[' + channel.getDisplayName() + ']'),
             chalk.cyanBright(user.userId, '(' + user.nickname + ')'),
           );
