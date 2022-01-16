@@ -211,9 +211,9 @@ ajv@^6.10.0, ajv@^6.12.4:
     uri-js "^4.2.2"
 
 ajv@^8.0.1:
-  version "8.8.2"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.8.2.tgz#01b4fef2007a28bf75f0b7fc009f62679de4abbb"
-  integrity sha512-x9VuX+R/jcFj1DHo/fCp99esgGDWiHENrKxaCENuCxpoMCmAt/COCGVDwA7kleEpEzJjDnvh3yGoOuLu0Dtllw==
+  version "8.9.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.9.0.tgz#738019146638824dea25edcf299dcba1b0e7eb18"
+  integrity sha512-qOKJyNj/h+OWx7s5DePL6Zu1KeM9jPZhwBqs+7DzP6bGOvqzVCSf0xueYmVuaC/oQ/VtS2zLMLHdQFbkka+XDQ==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -429,9 +429,9 @@ concat-map@0.0.1:
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
 core-js@^3.6.5:
-  version "3.20.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.2.tgz#46468d8601eafc8b266bd2dd6bf9dee622779581"
-  integrity sha512-nuqhq11DcOAbFBV4zCbKeGbKQsUDRqTX0oqx7AttUBuqe3h20ixsE039QHelbL6P4h+9kytVqyEtyZ6gsiwEYw==
+  version "3.20.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.3.tgz#c710d0a676e684522f3db4ee84e5e18a9d11d69a"
+  integrity sha512-vVl8j8ph6tRS3B8qir40H7yw7voy17xL0piAjlbBUsH7WIfzoedL/ZOr1OV9FyZQLWXsayOJyV4tnRyXR85/ag==
 
 cosmiconfig@^7.0.0:
   version "7.0.1"
@@ -701,9 +701,9 @@ fast-diff@^1.1.2:
   integrity sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==
 
 fast-glob@^3.2.9:
-  version "3.2.9"
-  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.9.tgz#8f55f664b68a236bd29fa165817fc44f2b11faba"
-  integrity sha512-MBwILhhD92sziIrMQwpqcuGERF+BH99ei2a3XsGJuqEKcSycAL+w0HWokFenZXona+kjFr82Lf71eTxNRC06XQ==
+  version "3.2.11"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.11.tgz#a1172ad95ceb8a16e20caa5c5e56480e5129c1d9"
+  integrity sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==
   dependencies:
     "@nodelib/fs.stat" "^2.0.2"
     "@nodelib/fs.walk" "^1.2.3"
@@ -776,9 +776,9 @@ flatted@^3.1.0:
   integrity sha512-8/sOawo8tJ4QOBX8YlQBMxL8+RLZfxMQOif9o0KUKTNTjMYElWPE0r/m5VNFxTRd0NSw8qSy8dajrwX4RYI1Hw==
 
 follow-redirects@^1.14.4:
-  version "1.14.6"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.6.tgz#8cfb281bbc035b3c067d6cd975b0f6ade6e855cd"
-  integrity sha512-fhUl5EwSJbbl8AR+uYL2KQDxLkdSjZGR36xy46AO7cOMTrCMON6Sa28FmAnC2tRTDbd/Uuzz3aJBv7EBN7JH8A==
+  version "1.14.7"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
+  integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
 
 form-data@^4.0.0:
   version "4.0.0"
@@ -1442,9 +1442,9 @@ run-parallel@^1.1.9:
     queue-microtask "^1.2.2"
 
 rxjs@^7.5.1:
-  version "7.5.1"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.1.tgz#af73df343cbcab37628197f43ea0c8256f54b157"
-  integrity sha512-KExVEeZWxMZnZhUZtsJcFwz8IvPvgu4G2Z2QyqjZQzUGr32KDYuSxrEYO4w3tFFNbfLozcrKUTvTPi+E9ywJkQ==
+  version "7.5.2"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.2.tgz#11e4a3a1dfad85dbf7fb6e33cbba17668497490b"
+  integrity sha512-PwDt186XaL3QN5qXj/H9DGyHhP3/RYYgZZwqBv9Tv8rsAaiwFH1IsJJlcgD37J7UW5a6O67qX0KWKS3/pu0m4w==
   dependencies:
     tslib "^2.1.0"
 
